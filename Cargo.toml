@@ -5,4 +5,7 @@ edition = "2024"
 
 [dependencies]
 clap = { version = "4.5.32", features = ["derive"] }
+iced = "0.13.1"
+rocket = { version = "0.5.1", features = ["json"] }
 serde = "1.0.219"
+yew = "0.21.0"
