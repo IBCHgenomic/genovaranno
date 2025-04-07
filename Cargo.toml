@@ -1,11 +1,13 @@
 [package]
-name = "NetMol"
+name = "VarAntAnno"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 clap = { version = "4.5.32", features = ["derive"] }
 dioxus = "0.6.3"
+dioxus-router = "0.6.3"
+dioxus-ssr = "0.6.2"
 iced = "0.13.1"
 leptos = "0.7.8"
 rocket = { version = "0.5.1", features = ["json"] }
