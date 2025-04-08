@@ -10,6 +10,7 @@ dioxus-router = "0.6.3"
 dioxus-ssr = "0.6.2"
 iced = "0.13.1"
 leptos = "0.7.8"
+rayon = "1.10.0"
 rocket = { version = "0.5.1", features = ["json"] }
 serde = "1.0.219"
 serde_json = "1.0.140"

@@ -12,6 +12,7 @@ dependencies = [
  "dioxus-ssr",
  "iced",
  "leptos",
+ "rayon",
  "rocket",
  "serde",
  "serde_json",
