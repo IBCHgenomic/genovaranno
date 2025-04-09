@@ -2,6 +2,7 @@ mod args;
 mod serdejson;
 use crate::args::CommandParse;
 use crate::args::Commands;
+use crate::serdejson::cuiparallel;
 use clap::Parser;
 
 /*
@@ -15,9 +16,14 @@ use clap::Parser;
 fn main() {
     let argsparse = CommandParse::parse();
     match &argsparse.command {
-        Commands::VariantAnalyzer { acmgfile, tsvfile } => {
-            let command = genomemap(acmgfile, tsvfile).unwrap();
-            println!("The file has been converted: {:?}", command);
+        Commands::CUIgenerate {
+            medgenhpo,
+            medgen_omim,
+            medgenmapping,
+            medgenpubmed,
+        } => {
+            let command = cuiparallel(medgenhpo, medgen_omim, medgenmapping, medgenpubmed).unwrap();
+            println!("The command has been completed");
         }
     }
 }

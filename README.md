@@ -6,6 +6,29 @@
  cargo build 
 ```
 
+```
+Variant annotator for human genomics.
+       ************************************************
+      Gaurav Sablok, IBCH, PAN, Poznan, Poland,
+      https://portal.ichb.pl/laboratory-of-genomics/.
+      Email: gsablok@ibch.poznan.pl
+      Funded through Development of a universal fast-response platform,
+      based on RNA technology,ensuring the national drug and epidemiological safety.
+      2021/ABM/05/00004-00 to
+      Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.
+      ************************************************
+
+Usage: VarAntAnno <COMMAND>
+
+Commands:
+  cu-igenerate  prepapre the CUI for the medgen
+  help          Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+```
+
 
  - Acknowledgement:Funded through Development of a universal fast-response platform, based on RNA technology,ensuring the national drug and epidemiological safety. 2021/ABM/05/00004-00 to Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.
 
