@@ -1,5 +1,6 @@
 mod args;
 mod serdejson;
+mod stringmedgenhpo;
 mod stringmedgenpubmed;
 mod stringreadmedgen;
 mod structfile;
