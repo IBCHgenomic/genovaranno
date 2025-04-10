@@ -1,7 +1,11 @@
 mod args;
 mod serdejson;
+mod stringmedgenpubmed;
+mod stringreadmedgen;
+mod structfile;
 use crate::args::CommandParse;
 use crate::args::Commands;
+use crate::serdejson;
 use crate::serdejson::cuiparallel;
 use clap::Parser;
 
