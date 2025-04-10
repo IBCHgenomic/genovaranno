@@ -1,5 +1,6 @@
 use crate::structfile::MedgenHPO;
 use rayon::prelude::*;
+use std::Sync::{Arc, Mutex};
 use std::error::Error;
 /*
  Authom GauravSablok
@@ -9,9 +10,9 @@ use std::error::Error;
  Date: 2025-4-10
 */
 
-pub fn stringhpo(hpostring: Vec<String>) -> Result<Vec<MedgenHPO>, Box<dyn Error>> {
+pub fn stringhpo(hpostring: Vec<String>) -> Result<Arc<Mutex<Vec<MedgenHPO>>>, Box<dyn Error>> {
     let stringmedgenhpo = hpostring.clone();
-    let mut medgenhpo: Vec<MedgenHPO> = Vec::new();
+    let mut medgenhpo: Arc<Mutex<Vec<MedgenHPO>>> = Arc::new(Mutex::new(Vec::new()));
     stringmedgenhpo.into_par_iter().for_each(|x| {
         if !x.starts_with("#") {
             let line = x;

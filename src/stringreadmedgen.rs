@@ -1,6 +1,7 @@
 use crate::structfile::MedgenMap;
 use rayon::prelude::*;
 use std::error::Error;
+use std::sync::{Arc, Mutex};
 /*
  Authom GauravSablok
  Instytut Chemii Bioorganicznej
@@ -9,9 +10,9 @@ use std::error::Error;
  Date: 2025-4-10
 */
 
-pub fn stringmedgen(listread: Vec<String>) -> Result<Vec<MedgenMap>, Box<dyn Error>> {
+pub fn stringmedgen(listread: Vec<String>) -> Result<Arc<Mutex<Vec<MedgenMap>>>, Box<dyn Error>> {
     let stringhold = listread.clone();
-    let mut medgenmap: Vec<MedgenMap> = Vec::new();
+    let mut medgenmap: Arc<Mutex<Vec<MedgenMap>>> = Arc::new(Mutex::new(Vec::new()));
     stringhold.into_par_iter().for_each(|x| {
         if !x.starts_with("#") {
             let line = x;
