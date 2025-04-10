@@ -1,6 +1,6 @@
 use crate::structfile::MedgenMap;
 use rayon::prelude::*;
-
+use std::error::Error;
 /*
  Authom GauravSablok
  Instytut Chemii Bioorganicznej
@@ -9,18 +9,18 @@ use rayon::prelude::*;
  Date: 2025-4-10
 */
 
-pub fn stringmedgen(listread: &str) -> Result<Vec<MedgenMap>, Box<dyn Error>> {
+pub fn stringmedgen(listread: Vec<String>) -> Result<Vec<MedgenMap>, Box<dyn Error>> {
     let stringhold = listread.clone();
     let mut medgenmap: Vec<MedgenMap> = Vec::new();
     stringhold.into_par_iter().for_each(|x| {
-        if !line.starts_with("#") {
-            let line = x.expect("line not present");
+        if !x.starts_with("#") {
+            let line = x;
             let linesplit: Vec<_> = line.split("|").collect::<Vec<_>>();
             medgenmap.push(MedgenMap {
-                cuiid: linesplit[0].to_clone(),
-                prefname: linesplit[1].to_clone(),
-                sourceid: linesplit[2].to_clone(),
-                source: linesplit[3].to_clone(),
+                cuiid: linesplit[0].clone().to_string(),
+                prefname: linesplit[1].clone().to_string(),
+                sourceid: linesplit[2].clone().to_string(),
+                source: linesplit[3].clone().to_string(),
             });
         }
     });

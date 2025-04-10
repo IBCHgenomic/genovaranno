@@ -1,6 +1,7 @@
 use crate::structfile::MedgenPubMed;
 use rayon::prelude::*;
 use std::error::Error;
+
 /*
  Authom GauravSablok
  Instytut Chemii Bioorganicznej
@@ -9,7 +10,7 @@ use std::error::Error;
  Date: 2025-4-10
 */
 
-pub fn stringpubmed(pubmedstring: Vec<String>) -> Result<Vec<MedgenPubMed>, Box<dyn Error>> {
+pub fn stringpoomim(pubmedstring: Vec<String>) -> Result<Vec<MedgenPubMed>, Box<dyn Error>> {
     let stringpubmed = pubmedstring.clone();
     let mut medgenpubmed: Vec<MedgenPubMed> = Vec::new();
     stringpubmed.into_par_iter().for_each(|x| {

@@ -1,4 +1,4 @@
-#[derive(Debug, Clone, PartialOrd, PartialEq, Serialize, Desearialize)]
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
 
 pub struct CUIJSON {
     pub sdui: String,

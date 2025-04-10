@@ -1,4 +1,8 @@
-use crate::serdejson::*;
+use crate::stringhpoomim;
+use crate::stringhpoomim::stringpoomim;
+use crate::stringmedgenhpo::stringhpo;
+use crate::stringmedgenpubmed::stringpubmed;
+use crate::stringreadmedgen::stringmedgen;
 use crate::structfile::CUIJSON;
 use crate::structfile::HPOOMIM;
 use crate::structfile::MedgenHPO;
@@ -33,6 +37,36 @@ pub fn cuiparallel(
     let medgenominread = BufReader::new(medgenomim);
     let medgenmappingread = BufReader::new(medgenmapping);
     let medgenpubmedread = BufReader::new(medgenpubmedopen);
+
+    let mut medgenvec_vec: Vec<_> = Vec::new();
+    let mut medgenomim_vec: Vec<_> = Vec::new();
+    let mut medgenmapping_vec: Vec<_> = Vec::new();
+    let mut medgenpubmedopen_vec: Vec<_> = Vec::new();
+
+    for i in medgenfileread.lines() {
+        let line = i.expect("line not present");
+        medgenvec_vec.push(line.clone());
+    }
+
+    for i in medgenominread.lines() {
+        let line = i.expect("line not present");
+        medgenomim_vec.push(line.clone());
+    }
+
+    for i in medgenmappingread.lines() {
+        let line = i.expect("line not present");
+        medgenmapping_vec.push(line.clone());
+    }
+
+    for i in medgenpubmedread.lines() {
+        let line = i.expect("line not present");
+        medgenpubmedopen_vec.push(line.clone());
+    }
+
+    let finalmedgenfile = stringhpo(medgenvec_vec).unwrap();
+    let finalmgenomim = stringpoomim(medgenomim_vec).unwrap();
+    let finalmedgenmapping = stringmedgen(medgenmapping_vec).unwrap();
+    let finalmedgenpubmed = stringpubmed(medgenpubmedopen_vec).unwrap();
 
     Ok("The serialization for the CUi has been written".to_string())
 }
