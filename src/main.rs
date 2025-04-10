@@ -1,9 +1,9 @@
 mod args;
-mod serdejson;
-mod stringhpoomim;
-mod stringmedgenhpo;
-mod stringmedgenpubmed;
-mod stringreadmedgen;
+mod hpoomim;
+mod medgen;
+mod medgenhpo;
+mod medgenpubmed;
+mod readmedgen;
 mod structfile;
 use crate::args::CommandParse;
 use crate::args::Commands;
