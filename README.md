@@ -1,5 +1,7 @@
 # VarAntAnno
 
+![](https://github.com/IBCHgenomic/eVaiutilities/blob/main/logo.png)
+
  - Parallel threaded SIMD Variant annotation uses dioxus for graph layout. 
 
 ```
