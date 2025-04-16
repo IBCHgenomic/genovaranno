@@ -7,7 +7,7 @@ mod readmedgen;
 mod structfile;
 use crate::args::CommandParse;
 use crate::args::Commands;
-use crate::serdejson::cuiparallel;
+use crate::medgen::cuiparallel;
 use clap::Parser;
 
 /*

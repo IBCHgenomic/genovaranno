@@ -1,6 +1,7 @@
 # VarAntAnno
 
  - Parallel threaded SIMD Variant annotation to network modeler for variant genomics uses dioxus for graph layout. Rust driven graphical embeeded user interface for human genomics with gpu support.
+https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=05bf7359320b1199d7a8bb459f7ba835
 
 ```
  cargo build 
