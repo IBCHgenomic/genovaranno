@@ -7,7 +7,7 @@ use std::io::{BufRead, BufReader};
  Instytut Chemii Bioorganicznej
  Polskiej Akademii Nauk
  ul. Noskowskiego 12/14 | 61-704, Poznań
- Date: 2025-4-10
+ Date: 2025-4-16
 */
 
 pub fn medgenhpomap(pubmedstring: &str) -> Result<Vec<Vec<MedgenHPO>>, Box<dyn Error>> {
