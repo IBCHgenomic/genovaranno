@@ -11,7 +11,7 @@ use std::io::{BufRead, BufReader};
  Date: 2025-4-16
 */
 
-pub fn medgenpubmedmap(pubmedstring: &str) -> Result<Vec<Vec<MedgenPubMed>>, Box<dyn Error>> {
+pub fn medgenpubmedmap(pubmedstring: &str) -> Result<Vec<MedgenPubMed>, Box<dyn Error>> {
     let fileopen = std::fs::File::open(pubmedstring).expect("file not found");
     let mut returnvector: Vec<Vec<_>> = Vec::new();
     let fileread = BufReader::new(fileopen);
@@ -20,24 +20,22 @@ pub fn medgenpubmedmap(pubmedstring: &str) -> Result<Vec<Vec<MedgenPubMed>>, Box
             .lines()
             .filter_map(|line: Result<String, _>| line.ok())
             .par_bridge()
-            .flat_map(|x| mapiter(x))
-            .collect::<Vec<_>>(),
+            .map(|x| {mapiter(x).unwrap();})
+            .collect()
     );
     let mut finaljson: Vec<MedgenPubMed> = Vec::new();
-    for i in returnvector.iter() {
-        for val in 0..i.len() {
+    for i in 0..returnvector.len() {
             finaljson.push(MedgenPubMed {
-                uid: i[0].clone().to_string(),
-                cui: i[1].clone().to_string(),
-                name: i[2].clone().to_string(),
-                pmid: i[3].clone().to_string(),
+                uid: returnvector[i][0].to_string().clone(),
+                cui: returnvector[i][1].to_string().clone(),
+                name: returnvector[i][2].to_string().clone(),
+                pmid: returnvector[i][3].to_string().clone(),
             });
-        }
     }
     Ok(finaljson)
 }
 
-pub fn mapiter(lineread: String) -> Result<Vec<String>, Box<dyn Error>> {
+pub fn mapiter(lineread: String) -> Result<Vec<Vec<String>>, Box<dyn Error>> {
     let mut medgenpubmed: Vec<_> = Vec::new();
     let line = lineread.clone();
     if !line.starts_with("#") {

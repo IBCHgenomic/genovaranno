@@ -10,7 +10,7 @@ use std::io::{BufRead, BufReader};
  Date: 2025-4-10
 */
 
-pub fn hpoomimmap(hpo: &str) -> Result<Vec<Vec<HPOOMIM>>, Box<dyn Error>> {
+pub fn hpoomimmap(hpo: &str) -> Result<Vec<HPOOMIM>, Box<dyn Error>> {
     let fileopen = std::fs::File::open(hpo).expect("file not found");
     let mut returnvector: Vec<Vec<_>> = Vec::new();
     let fileread = BufReader::new(fileopen);
@@ -19,31 +19,28 @@ pub fn hpoomimmap(hpo: &str) -> Result<Vec<Vec<HPOOMIM>>, Box<dyn Error>> {
             .lines()
             .filter_map(|line: Result<String, _>| line.ok())
             .par_bridge()
-            .flat_map(|x| mapiter(x))
-            .collect::<Vec<_>>(),
+            .map(|x| {mapiter(x).unwrap();})
+            .collect()
     );
     let mut finaljson: Vec<HPOOMIM> = Vec::new();
-    for i in returnvector.iter() {
-        for val in 0..i.len() {
+    for i in 0..returnvector.len() {
             finaljson.push(HPOOMIM {
-                omimcui: i[0].clone().to_string(),
-                mimnumber: i[1].clone().to_string(),
-                omimname: i[2].clone().to_string(),
-                relationship: i[3].clone().to_string(),
-                hpocui: i[4].clone().to_string(),
-                hpoid: i[5].clone().to_string(),
-                hponame: i[6].clone().to_string(),
-                medgenname: i[7].clone().to_string(),
-                medgensource: i[8].clone().to_string(),
-                sty: i[9].clone().to_string(),
+                omimcui: returnvector[i][0].to_string().clone(),
+                mimnumber: returnvector[i][1].to_string().clone(),
+                omimname: returnvector[i][2].to_string().clone(),
+                relationship: returnvector[i][3].to_string().clone(),
+                hpocui: returnvector[i][4].to_string().clone(),
+                hpoid: returnvector[i][5].to_string().clone(),
+                hponame: returnvector[i][6].to_string().clone(),
+                medgenname: returnvector[i][7].to_string().clone(),
+                medgensource: returnvector[i][8].to_string().clone(),
+                sty: returnvector[i][9].to_string().clone(),
             });
-        }
-
-        Ok(finaljson)
     }
+        Ok(finaljson)
 }
 
-pub fn mapiter(lineread: String) -> Result<Vec<String>, Box<dyn Error>> {
+pub fn mapiter(lineread: String) -> Result<Vec<Vec<String>>, Box<dyn Error>> {
     let mut medgenpubmed: Vec<_> = Vec::new();
     let line = lineread.clone();
     if !line.starts_with("#") {
