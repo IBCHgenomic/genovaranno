@@ -1,4 +1,4 @@
-# VarAntAnno
+# genovaranno
 
 ![](https://github.com/IBCHgenomic/eVaiutilities/blob/main/logo.png)
 
