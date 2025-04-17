@@ -2,10 +2,10 @@
 
 ![](https://github.com/IBCHgenomic/eVaiutilities/blob/main/logo.png)
 
- - Parallel threaded SIMD Variant annotation uses dioxus for graph layout. 
+ - Parallel threaded SIMD Variant annotation uses dioxus for graph layout.
 
 ```
- cargo build 
+ cargo build
 ```
 
 ```
@@ -14,10 +14,8 @@ Variant annotator for human genomics.
       Gaurav Sablok, IBCH, PAN, Poznan, Poland,
       https://portal.ichb.pl/laboratory-of-genomics/.
       Email: gsablok@ibch.poznan.pl
-      Funded through Development of a universal fast-response platform,
-      based on RNA technology,ensuring the national drug and epidemiological safety.
-      2021/ABM/05/00004-00 to
-      Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.
+      Prof. Luiza Handschuh
+      Email: luizahan@ibch.poznan.pl.
       ************************************************
 
 Usage: VarAntAnno <COMMAND>
@@ -31,7 +29,7 @@ Options:
   -V, --version  Print version
 ```
 
-- Acknowledgements: MOSAIC platform, developed as part of the ECBiG-MOSAIC project (POIR.04.02.00-00-D017/20), co-financed by the European Regional Development Fund (ERDF) under the Smart Growth Operational Programme 2014-2020, Measure 4.2 for the development of modern research infrastructure in the science sector. 
+- Acknowledgements: MOSAIC platform, developed as part of the ECBiG-MOSAIC project (POIR.04.02.00-00-D017/20), co-financed by the European Regional Development Fund (ERDF) under the Smart Growth Operational Programme 2014-2020, Measure 4.2 for the development of modern research infrastructure in the science sector.
 - Project PI and Informal queries: Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.
 - VarAntAnno code related queries: Dr. Gaurav Sablok: gsablok@ibch.poznan.pl.
 

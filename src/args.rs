@@ -8,10 +8,8 @@ use clap::{Parser, Subcommand};
       Gaurav Sablok, IBCH, PAN, Poznan, Poland,
       https://portal.ichb.pl/laboratory-of-genomics/.
       Email: gsablok@ibch.poznan.pl
-      Funded through Development of a universal fast-response platform,
-      based on RNA technology,ensuring the national drug and epidemiological safety.
-      2021/ABM/05/00004-00 to
-      Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.
+      Prof. Luiza Handschuh
+      Email: luizahan@ibch.poznan.pl.
       ************************************************"
 )]
 pub struct CommandParse {
