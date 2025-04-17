@@ -60,3 +60,51 @@ pub struct MedgenPubMed {
     pub name: String,
     pub pmid: String,
 }
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct OMIMEvidence {
+    pub databaseid: String,
+    pub diseasename: String,
+    pub qualifier: String,
+    pub hpoid: String,
+    pub reference: String,
+    pub evidence: String,
+    pub onset: String,
+    pub frequency: String,
+    pub sex: String,
+    pub modifier: String,
+    pub aspect: String,
+    pub biocuration: Vec<String>,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct OMIMEvidenceMerged {
+    pub databaseid: String,
+    pub diseasename: String,
+    pub qualifier: String,
+    pub hpoid: String,
+    pub reference: String,
+    pub evidence: String,
+    pub onset: String,
+    pub frequency: String,
+    pub sex: String,
+    pub modifier: String,
+    pub aspect: String,
+    pub biocuration: Vec<String>,
+    pub cui: String,
+    pub sdui: String,
+    pub hpostr: String,
+    pub medgenstr: String,
+    pub medgenstrsab: String,
+    pub sty: String,
+    pub omimcui: String,
+    pub mimnumber: String,
+    pub omimname: String,
+    pub relationship: String,
+    pub hpocui: String,
+    pub hpoid: String,
+    pub hponame: String,
+    pub medgenname: String,
+    pub medgensource: String,
+    pub sty: String,
+}

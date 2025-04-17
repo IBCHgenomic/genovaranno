@@ -13,24 +13,23 @@ use std::io::{BufRead, BufReader};
 pub fn medgenmapmap(pubmedstring: &str) -> Result<Vec<MedgenMap>, Box<dyn Error>> {
     let fileopen = std::fs::File::open(pubmedstring).expect("file not found");
     let fileread = BufReader::new(fileopen);
-    let returnvector: Vec<Vec<_>> =
-        fileread
-            .lines()
-            .filter_map(|line: Result<String, _>| line.ok())
-            .par_bridge()
-            .map(|x| mapiter(x).unwrap())
-            .collect::<Vec<_>>();
+    let returnvector: Vec<Vec<_>> = fileread
+        .lines()
+        .filter_map(|line: Result<String, _>| line.ok())
+        .par_bridge()
+        .map(|x| mapiter(x).unwrap())
+        .collect::<Vec<_>>();
 
     let mut finaljson: Vec<MedgenMap> = Vec::new();
     for i in returnvector.iter() {
-        for j in i.iter(){
+        for j in i.iter() {
             finaljson.push(MedgenMap {
                 cuiid: j.cuiid.clone(),
                 prefname: j.prefname.clone(),
                 sourceid: j.sourceid.clone(),
                 source: j.source.clone(),
             });
-    }
+        }
     }
     Ok(finaljson)
 }

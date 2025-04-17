@@ -3,6 +3,7 @@ mod hpoomim;
 mod medgen;
 mod medgenhpo;
 mod medgenpubmed;
+mod omim;
 mod readmedgen;
 mod structfile;
 use crate::args::CommandParse;
@@ -29,6 +30,10 @@ fn main() {
         } => {
             let command = cuiparallel(medgenhpo, medgen_omim, medgenmapping, medgenpubmed).unwrap();
             println!("The command has been completed");
+        }
+        Commands::OMIM { omimfile } => {
+            let command = omimevidence(omimfile).unwrap();
+            println!("The links for the given evidence are:{}", command);
         }
     }
 }
