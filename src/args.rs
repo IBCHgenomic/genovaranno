@@ -31,12 +31,12 @@ pub enum Commands {
         /// medgen pubmed
         medgenpubmed: String,
     },
-    /// NCBI Pubmed link based on OMIM and Evidence
+    /// OMIM and Evidence Annotator
     OMIM {
         /// generate the link to OMIM and NCBI
         omimfile: String,
         /// evidence number
-        evidencenumber: Option<usize>,
+        evidencenumber: String,
         /// HPO mapping
         hpomapping: String,
         /// HPO megdgen file

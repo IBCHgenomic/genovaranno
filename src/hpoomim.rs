@@ -48,7 +48,9 @@ pub fn mapiter(lineread: String) -> std::io::Result<Vec<HPOOMIM>> {
             omimcui: linesplit[0].to_string(),
             mimnumber: linesplit[1].to_string(),
             omimname: linesplit[2].to_string(),
-            relationship: linesplit[3].to_string().split(":").collect::<Vec<_>>()[1].to_string().clone(),
+            relationship: linesplit[3].to_string().split(":").collect::<Vec<_>>()[1]
+                .to_string()
+                .clone(),
             hpocui: linesplit[4].to_string(),
             hpoid: linesplit[5].to_string(),
             hponame: linesplit[6].to_string(),

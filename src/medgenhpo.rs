@@ -44,7 +44,9 @@ pub fn mapiter(lineread: String) -> std::io::Result<Vec<MedgenHPO>> {
         medgenhpo.push(MedgenHPO {
             cui: linesplit[0].to_string().clone(),
             sdui: linesplit[1].to_string().clone(),
-            hpostr: linesplit[2].to_string().split(":").collect::<Vec<_>>()[1].to_string().clone(),
+            hpostr: linesplit[2].to_string().split(":").collect::<Vec<_>>()[1]
+                .to_string()
+                .clone(),
             medgenstr: linesplit[3].to_string().clone(),
             medgenstrsab: linesplit[4].to_string().clone(),
             sty: linesplit[5].to_string().clone(),

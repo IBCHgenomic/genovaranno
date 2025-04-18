@@ -9,6 +9,7 @@ mod structfile;
 use crate::args::CommandParse;
 use crate::args::Commands;
 use crate::medgen::cuiparallel;
+use crate::omim::omimevidence;
 use clap::Parser;
 
 /*
@@ -29,11 +30,16 @@ fn main() {
             medgenpubmed,
         } => {
             let command = cuiparallel(medgenhpo, medgen_omim, medgenmapping, medgenpubmed).unwrap();
-            println!("The command has been completed");
+            println!("The command has been completed:{:?}", command);
         }
-        Commands::OMIM { omimfile, evidencenumber, hpomapping, hpomedgen } => {
-            let command = omimevidence(omimfile).unwrap();
-            println!("The links for the given evidence are:{}", command);
+        Commands::OMIM {
+            omimfile,
+            evidencenumber,
+            hpomapping,
+            hpomedgen,
+        } => {
+            let command = omimevidence(omimfile, evidencenumber, hpomapping, hpomedgen).unwrap();
+            println!("The links for the given evidence are:{:?}", command);
         }
     }
 }
