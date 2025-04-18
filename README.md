@@ -21,13 +21,15 @@ Variant annotator for human genomics.
 Usage: genovaranno <COMMAND>
 
 Commands:
-  cu-igenerate  prepapre the CUI for the medgen
-  omim          OMIM and Evidence Annotator
-  help          Print this message or the help of the given subcommand(s)
+  cu-igenerate            prepapre the CUI for the medgen
+  omim                    OMIM and Evidence Annotator
+  clin-var-omim-evidence  clinicvar OMIM and Evidence annotator
+  help                    Print this message or the help of the given subcommand(s)
 
 Options:
   -h, --help     Print help
   -V, --version  Print version
+
 ```
 - Acknowledgements: MOSAIC platform, developed as part of the ECBiG-MOSAIC project (POIR.04.02.00-00-D017/20), co-financed by the European Regional Development Fund (ERDF) under the Smart Growth Operational Programme 2014-2020, Measure 4.2 for the development of modern research infrastructure in the science sector.
 - Project PI and Informal queries: Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.

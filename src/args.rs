@@ -42,4 +42,15 @@ pub enum Commands {
         /// HPO megdgen file
         hpomedgen: String,
     },
+    /// clinicvar OMIM and Evidence annotator
+    ClinVarOMIMEvidence {
+        /// provide the clinicavar file
+        clinvar: String,
+        /// provide the medgen file
+        medgen: String,
+        /// provide the medgenhpo file
+        medgenhpo: String,
+        /// provide the OMIM number
+        omim: String,
+    },
 }

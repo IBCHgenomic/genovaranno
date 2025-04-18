@@ -1,4 +1,5 @@
 mod args;
+mod clinicvar;
 mod hpoomim;
 mod medgen;
 mod medgenhpo;
@@ -10,6 +11,7 @@ use crate::args::CommandParse;
 use crate::args::Commands;
 use crate::medgen::cuiparallel;
 use crate::omim::omimevidence;
+use crate::clinicvar::clinvarmapper;
 use clap::Parser;
 
 /*
@@ -40,6 +42,10 @@ fn main() {
         } => {
             let command = omimevidence(omimfile, evidencenumber, hpomapping, hpomedgen).unwrap();
             println!("The links for the given evidence are:{:?}", command);
+        }
+        Commands::ClinVarOMIMEvidence { clinvar, medgen, medgenhpo, omim } => {
+            let command = clinvarmapper(clinvar, medgen, medgenhpo, omim).unwrap();
+            println!("The command has completed:{:?}", command);
         }
     }
 }

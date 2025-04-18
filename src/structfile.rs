@@ -106,3 +106,60 @@ pub struct OMIMEvidenceMerged {
     pub medgensource: String,
     pub sty: String,
 }
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct ClinVarInfo {
+    pub alleleid: String,
+    pub clndisdb: String,
+    pub clndn: String,
+    pub clnhgvs: String,
+    pub clnrevstat: String,
+    pub clnsig: String,
+    pub clnsigscv: String,
+    pub clnvc: String,
+    pub clnvcso: String,
+    pub clnvi: String,
+    pub geneinfo: String,
+    pub mc: String,
+    pub origin: String,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct ClinVar {
+    pub chrom: String,
+    pub pos: String,
+    pub id: String,
+    pub refid: String,
+    pub altallele: String,
+    pub qual: String,
+    pub filter: String,
+    /// struct to struct mapping for heap allocation
+    pub info: ClinVarInfo,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct ClinVarOMIM {
+    pub chrom: String,
+    pub pos: String,
+    pub id: String,
+    pub refid: String,
+    pub altallele: String,
+    pub qual: String,
+    pub filter: String,
+    /// struct to struct mapping for heap allocation
+    pub info: ClinVarInfo,
+    pub cui: String,
+    pub sdui: String,
+    pub hpostr: String,
+    pub medgenstr: String,
+    pub medgenstrsab: String,
+    pub omimcui: String,
+    pub mimnumber: String,
+    pub omimname: String,
+    pub relationship: String,
+    pub hpocui: String,
+    pub hponame: String,
+    pub medgenname: String,
+    pub medgensource: String,
+    pub sty: String,
+}
