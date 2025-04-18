@@ -31,7 +31,7 @@ fn main() {
             let command = cuiparallel(medgenhpo, medgen_omim, medgenmapping, medgenpubmed).unwrap();
             println!("The command has been completed");
         }
-        Commands::OMIM { omimfile } => {
+        Commands::OMIM { omimfile, evidencenumber, hpomapping, hpomedgen } => {
             let command = omimevidence(omimfile).unwrap();
             println!("The links for the given evidence are:{}", command);
         }
