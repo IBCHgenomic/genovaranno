@@ -7,11 +7,13 @@ mod medgenpubmed;
 mod omim;
 mod readmedgen;
 mod structfile;
+mod ncbigeneid;
 use crate::args::CommandParse;
 use crate::args::Commands;
 use crate::medgen::cuiparallel;
 use crate::omim::omimevidence;
 use crate::clinicvar::clinvarmapper;
+use crate::ncbigeneid::ncbiannotate;
 use clap::Parser;
 
 /*
@@ -46,6 +48,10 @@ fn main() {
         Commands::ClinVarOMIMEvidence { clinvar, medgen, medgenhpo, omim } => {
             let command = clinvarmapper(clinvar, medgen, medgenhpo, omim).unwrap();
             println!("The command has completed:{:?}", command);
+        }
+        Commands::NCBIAnnotate { ncbigeneid, clinvar, medgenomim, medgenhpo, omimsearch } => {
+              let command = ncbiannotate(ncbigeneid, clinvar, medgenomim, medgenhpo, omimsearch).unwrap();
+              println!("The command has completed:{:?}", command);
         }
     }
 }

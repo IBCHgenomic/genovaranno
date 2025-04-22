@@ -53,4 +53,17 @@ pub enum Commands {
         /// provide the OMIM number
         omim: String,
     },
+    /// NCBI gene annotate
+    NCBIAnnotate{
+          /// provide the ncbigene id file
+          ncbigeneid: String,
+          /// provide the clinvar file
+          clinvar: String,
+          /// provide the medgenomim file
+          medgenomim: String,
+          /// provide the medgenhpo file
+          medgenhpo: String,
+          /// provide the OMIM number
+          omimsearch: String,
+    },
 }

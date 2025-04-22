@@ -146,7 +146,6 @@ pub struct ClinVarOMIM {
     pub altallele: String,
     pub qual: String,
     pub filter: String,
-    /// struct to struct mapping for heap allocation
     pub info: ClinVarInfo,
     pub cui: String,
     pub sdui: String,
@@ -162,4 +161,42 @@ pub struct ClinVarOMIM {
     pub medgenname: String,
     pub medgensource: String,
     pub sty: String,
+}
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct NCBIgene {
+      pub ncbigeneid: String,
+      pub genesymbol: String,
+      pub association: String,
+      pub disease: usize,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct NCBIgeneMerged{
+         pub ncbigeneid: String,
+         pub genesymbol: String,
+         pub association: String,
+         pub disease: String,
+         pub chrom: String,
+         pub pos: String,
+         pub id: String,
+         pub refid: String,
+         pub altallele: String,
+         pub qual: String,
+         pub filter: String,
+         pub info: ClinVarInfo,
+         pub cui: String,
+         pub sdui: String,
+         pub hpostr: String,
+         pub medgenstr: String,
+         pub medgenstrsab: String,
+         pub omimcui: String,
+         pub omimnumber: String,
+         pub mimname: String,
+         pub relationship: String,
+         pub hpocui: String,
+         pub hponame: String,
+         pub medgenname: String,
+         pub medgensource: String,
+         pub sty: String,
+
 }
