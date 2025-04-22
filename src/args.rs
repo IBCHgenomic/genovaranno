@@ -66,4 +66,8 @@ pub enum Commands {
           /// provide the OMIM number
           omimsearch: String,
     },
+    /// Multistage annotation linker
+    Annotator {
+
+    },
 }
