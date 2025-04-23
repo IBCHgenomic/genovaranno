@@ -77,4 +77,11 @@ pub enum Commands {
         /// provide the evidence number
         evidence: String,
     },
+    /// annotate vcf to clinvar and medgen
+    VCFClinVarAnnotate {
+        /// provide the vcf file for annotation
+        vcffile: String,
+        /// provide the clinvar file for annotation
+        clinvar: String,
+    },
 }

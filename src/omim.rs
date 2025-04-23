@@ -10,7 +10,7 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 /*
- Authom GauravSablok
+ Author Gaurav Sablok
  Instytut Chemii Bioorganicznej
  Polskiej Akademii Nauk
  ul. Noskowskiego 12/14 | 61-704, Poznań

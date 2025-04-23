@@ -1,5 +1,7 @@
+mod annotation;
 mod args;
 mod clinicvar;
+mod clinvarlinker;
 mod hpoomim;
 mod medgen;
 mod medgenhpo;
@@ -8,14 +10,14 @@ mod ncbigeneid;
 mod omim;
 mod readmedgen;
 mod structfile;
-mod annotation;
+use crate::annotation::ontologyannotate;
 use crate::args::CommandParse;
 use crate::args::Commands;
 use crate::clinicvar::clinvarmapper;
+use crate::clinvarlinker::clinvarvcf;
 use crate::medgen::cuiparallel;
 use crate::ncbigeneid::ncbiannotate;
 use crate::omim::omimevidence;
-use crate::annotation::ontologyannotate;
 use clap::Parser;
 
 /*
@@ -75,6 +77,13 @@ fn main() {
         } => {
             let command = ontologyannotate(pathncbimaxo, medgenomim, medgenhpo, evidence).unwrap();
             println!("The command has been completed:{:?}", command)
+        }
+        Commands::VCFClinVarAnnotate { vcffile, clinvar } => {
+            let command = clinvarvcf(vcffile, clinvar).unwrap();
+            println!(
+                "The command has finished and the annotated vcf file has been written:{:?}",
+                command
+            );
         }
     }
 }

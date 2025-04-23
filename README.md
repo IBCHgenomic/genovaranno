@@ -28,6 +28,7 @@ Commands:
   clin-var-omim-evidence  clinicvar OMIM and Evidence annotator
   ncbi-annotate           NCBI gene annotate
   annotator               Multistage annotation linker
+  vcf-clin-var-annotate   annotate vcf to clinvar and medgen
   help                    Print this message or the help of the given subcommand(s)
 
 Options:
