@@ -1,13 +1,13 @@
-use crate::structfile::ClinVar;
-use crate::structfile::ClinVarOMIM;
-use crate::structfile::ClinVarInfo;
-use crate::structfile::HPOOMIM;
-use crate::structfile::MedgenHPO;
 use crate::hpoomim::hpoomimmap;
 use crate::medgenhpo::medgenhpomap;
+use crate::structfile::ClinVar;
+use crate::structfile::ClinVarInfo;
+use crate::structfile::ClinVarOMIM;
+use crate::structfile::MedgenHPO;
+use crate::structfile::HPOOMIM;
 use rayon::prelude::*;
 use std::error::Error;
-use std::io::{BufReader, BufRead};
+use std::io::{BufRead, BufReader};
 
 /*
  Authom GauravSablok
@@ -17,7 +17,12 @@ use std::io::{BufReader, BufRead};
  Date: 2025-4-18
 */
 
-pub fn clinvarmapper(clinvar: &str, medgenomim: &str, medgenhpo: &str, omim: &str) -> Result<Vec<ClinVarOMIM>, Box<dyn Error>> {
+pub fn clinvarmapper(
+    clinvar: &str,
+    medgenomim: &str,
+    medgenhpo: &str,
+    omim: &str,
+) -> Result<Vec<ClinVarOMIM>, Box<dyn Error>> {
     let fileopen = std::fs::File::open(clinvar).expect("file not found");
     let fileread = BufReader::new(fileopen);
     let returnvector: Vec<Vec<_>> = fileread
@@ -57,54 +62,54 @@ pub fn clinvarmapper(clinvar: &str, medgenomim: &str, medgenhpo: &str, omim: &st
     }
     let hpomap: Vec<HPOOMIM> = hpoomimmap(medgenomim).unwrap();
     let hpomedgen: Vec<MedgenHPO> = medgenhpomap(medgenhpo).unwrap();
-    let mut writeclinvar:Vec<ClinVarOMIM> = Vec::new();
-    for i in finaljson.iter(){
-          for val in hpomap.iter(){
-                for en in hpomedgen.iter(){
-                      if i.info.clndisdb.contains(omim) {
-                            writeclinvar.push(ClinVarOMIM{
-                                  chrom: i.chrom.clone(),
-                                  pos: i.pos.clone(),
-                                  id: i.id.clone(),
-                                  refid: i.refid.clone(),
-                                  altallele: i.altallele.clone(),
-                                  qual: i.qual.clone(),
-                                  filter: i.filter.clone(),
-                                  info: ClinVarInfo {
-                                      alleleid: i.info.alleleid.clone(),
-                                      clndisdb: i.info.clndisdb.clone(),
-                                      clndn: i.info.clndn.clone(),
-                                      clnhgvs: i.info.clnhgvs.clone(),
-                                      clnrevstat: i.info.clnrevstat.clone(),
-                                      clnsig: i.info.clnsig.clone(),
-                                      clnsigscv: i.info.clnsigscv.clone(),
-                                      clnvc: i.info.clnvc.clone(),
-                                      clnvcso: i.info.clnvcso.clone(),
-                                      clnvi: i.info.clnvi.clone(),
-                                      geneinfo: i.info.geneinfo.clone(),
-                                      mc: i.info.mc.clone(),
-                                      origin: i.info.mc.clone(),
-                                  },
-                                  cui: en.cui.clone(),
-                                  sdui: en.sdui.clone(),
-                                  hpostr: en.hpostr.clone(),
-                                  medgenstr: en.medgenstr.clone(),
-                                  medgenstrsab: en.medgenstrsab.clone(),
-                                  sty: val.sty.clone(),
-                                  omimcui: val.omimcui.clone(),
-                                  mimnumber: val.mimnumber.clone(),
-                                  omimname: val.omimname.clone(),
-                                  relationship: val.relationship.clone(),
-                                  hpocui: val.hpocui.clone(),
-                                  hponame: val.hponame.clone(),
-                                  medgenname: val.medgenname.clone(),
-                                  medgensource: val.medgensource.clone(),
-                            });
-                      }
+    let mut writeclinvar: Vec<ClinVarOMIM> = Vec::new();
+    for i in finaljson.iter() {
+        for val in hpomap.iter() {
+            for en in hpomedgen.iter() {
+                if i.info.clndisdb.contains(omim) {
+                    writeclinvar.push(ClinVarOMIM {
+                        chrom: i.chrom.clone(),
+                        pos: i.pos.clone(),
+                        id: i.id.clone(),
+                        refid: i.refid.clone(),
+                        altallele: i.altallele.clone(),
+                        qual: i.qual.clone(),
+                        filter: i.filter.clone(),
+                        info: ClinVarInfo {
+                            alleleid: i.info.alleleid.clone(),
+                            clndisdb: i.info.clndisdb.clone(),
+                            clndn: i.info.clndn.clone(),
+                            clnhgvs: i.info.clnhgvs.clone(),
+                            clnrevstat: i.info.clnrevstat.clone(),
+                            clnsig: i.info.clnsig.clone(),
+                            clnsigscv: i.info.clnsigscv.clone(),
+                            clnvc: i.info.clnvc.clone(),
+                            clnvcso: i.info.clnvcso.clone(),
+                            clnvi: i.info.clnvi.clone(),
+                            geneinfo: i.info.geneinfo.clone(),
+                            mc: i.info.mc.clone(),
+                            origin: i.info.mc.clone(),
+                        },
+                        cui: en.cui.clone(),
+                        sdui: en.sdui.clone(),
+                        hpostr: en.hpostr.clone(),
+                        medgenstr: en.medgenstr.clone(),
+                        medgenstrsab: en.medgenstrsab.clone(),
+                        sty: val.sty.clone(),
+                        omimcui: val.omimcui.clone(),
+                        mimnumber: val.mimnumber.clone(),
+                        omimname: val.omimname.clone(),
+                        relationship: val.relationship.clone(),
+                        hpocui: val.hpocui.clone(),
+                        hponame: val.hponame.clone(),
+                        medgenname: val.medgenname.clone(),
+                        medgensource: val.medgensource.clone(),
+                    });
                 }
-          }
+            }
+        }
     }
- Ok(writeclinvar)
+    Ok(writeclinvar)
 }
 
 /// a nested json mapper for the clinavr

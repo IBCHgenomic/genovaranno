@@ -54,20 +54,27 @@ pub enum Commands {
         omim: String,
     },
     /// NCBI gene annotate
-    NCBIAnnotate{
-          /// provide the ncbigene id file
-          ncbigeneid: String,
-          /// provide the clinvar file
-          clinvar: String,
-          /// provide the medgenomim file
-          medgenomim: String,
-          /// provide the medgenhpo file
-          medgenhpo: String,
-          /// provide the OMIM number
-          omimsearch: String,
+    NCBIAnnotate {
+        /// provide the ncbigene id file
+        ncbigeneid: String,
+        /// provide the clinvar file
+        clinvar: String,
+        /// provide the medgenomim file
+        medgenomim: String,
+        /// provide the medgenhpo file
+        medgenhpo: String,
+        /// provide the OMIM number
+        omimsearch: String,
     },
     /// Multistage annotation linker
     Annotator {
-
+        ///maxo annotations file
+        pathncbimaxo: String,
+        /// provide the medgenomim file
+        medgenomim: String,
+        /// provide the medgenhpo file
+        medgenhpo: String,
+        /// provide the evidence number
+        evidence: String,
     },
 }

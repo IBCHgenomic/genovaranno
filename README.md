@@ -27,6 +27,7 @@ Commands:
   omim                    OMIM and Evidence Annotator
   clin-var-omim-evidence  clinicvar OMIM and Evidence annotator
   ncbi-annotate           NCBI gene annotate
+  annotator               Multistage annotation linker
   help                    Print this message or the help of the given subcommand(s)
 
 Options:
