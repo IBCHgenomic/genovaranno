@@ -265,3 +265,63 @@ pub struct VCFAnnotate {
     pub altallele: String,
     pub quality: String,
 }
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct Phenotype {
+    pub hponameid: usize,
+    pub hponame: String,
+    pub ncbi_geneid: String,
+    pub genesymbol: String,
+    pub diseaseidpheno: usize,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct PhenotypeHPOA {
+    pub databaseid: String,
+    pub diseasename: String,
+    pub qualifier: String,
+    pub hpoid: usize,
+    pub reference: String,
+    pub evidence: String,
+    pub onset: String,
+    pub frequency: String,
+    pub sex: String,
+    pub modifier: String,
+    pub aspect: String,
+    pub biocuration: String,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct GenePhenotype {
+    pub ncbigeneid: String,
+    pub genesymbol: String,
+    pub hpoid: usize,
+    pub hponame: String,
+    pub frequency: String,
+    pub diseaseid: usize,
+}
+
+#[derive(Debug, Clone, PartialOrd, PartialEq)]
+pub struct PhenotypeMerged {
+    pub hponameid: String,
+    pub ncbi_geneid: String,
+    pub diseaseidpheno: String,
+    pub databaseid: String,
+    pub diseasename: String,
+    pub qualifier: String,
+    pub reference: String,
+    pub evidence: String,
+    pub onset: String,
+    pub sex: String,
+    pub modifier: String,
+    pub aspect: String,
+    pub biocuration: String,
+    pub hpoid: String,
+    pub hponame: String,
+    pub frequency: String,
+    pub diseaseid: String,
+    pub ncbigeneid: String,
+    pub genesymbol: String,
+    pub association: String,
+    pub disease: usize,
+}

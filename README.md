@@ -2,9 +2,8 @@
 
 ![](https://github.com/IBCHgenomic/eVaiutilities/blob/main/logo.png)
 
- - Parallel threaded SIMD Variant annotation uses dioxus for graph layout.
- - Each annotation is done as a seaprate command also and also a single merged command for the complete annotation allowing the user to do complete annotation of the vcf files or specific parts of the annotation. 
-
+- Parallel threaded SIMD Variant annotation uses dioxus for graph layout.
+- Each annotation is done as a seaprate command also and also a single merged command for the complete annotation allowing the user to do complete annotation of the vcf files or specific parts of the annotation.
 
 ```
  cargo build
@@ -29,6 +28,7 @@ Commands:
   ncbi-annotate           NCBI gene annotate
   annotator               Multistage annotation linker
   vcf-clin-var-annotate   annotate vcf to clinvar and medgen
+  phenotype-linker        Phenotype associations
   help                    Print this message or the help of the given subcommand(s)
 
 Options:
@@ -40,8 +40,4 @@ Options:
 - Project PI and Informal queries: Prof. Luiza Handschuh: luizahan@ibch.poznan.pl.
 - VarAntAnno code related queries: Dr. Gaurav Sablok: gsablok@ibch.poznan.pl.
 
- Gaurav Sablok \
- Instytut Chemii Bioorganicznej \
- Polskiej Akademii Nauk \
- ul. Noskowskiego 12/14 | 61-704, Poznań \
- Poland
+Gaurav Sablok Instytut Chemii Bioorganicznej Polskiej Akademii Nauk ul. Noskowskiego 12/14 | 61-704, Poznań Poland

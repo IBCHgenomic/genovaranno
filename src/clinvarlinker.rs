@@ -6,8 +6,8 @@ use crate::structfile::ClinVarOMIM;
 use crate::structfile::MedgenHPO;
 use crate::structfile::VCFAnnotate;
 use crate::structfile::HPOOMIM;
-use rayon::prelude::*;
 use dotenv::dotenv;
+use rayon::prelude::*;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
@@ -21,11 +21,10 @@ use std::io::{BufRead, BufReader};
 */
 
 pub fn clinvarvcf(vcffile: &str, clinvar: &str) -> Result<Vec<ClinVarOMIM>, Box<dyn Error>> {
-
-          /*adding a dotenv for the other files(later will
-          add for all the files so that it reads the
-          databae automatically)
-          */
+    /*adding a dotenv for the other files(later will
+    add for all the files so that it reads the
+    databae automatically)
+    */
     dotenv().ok();
     let medgenomim = std::env::var("file1").expect("file not present");
     let medgenhpo = std::env::var("file2").expect("file not present");
@@ -76,17 +75,17 @@ pub fn clinvarvcf(vcffile: &str, clinvar: &str) -> Result<Vec<ClinVarOMIM>, Box<
     }
 
     let mut final_vcf_annotate: Vec<VCFAnnotate> = Vec::new();
-    for i in vcfvector.iter(){
-              for val in i.iter(){
-                        final_vcf_annotate.push(VCFAnnotate{
-                                  chromo: val.chromo.clone(),
-                                  position: val.position.clone(),
-                                  id: val.id.clone(),
-                                  refallele: val.refallele.clone(),
-                                  altallele: val.altallele.clone(),
-                                  quality: val.quality.clone(),
-                        });
-              }
+    for i in vcfvector.iter() {
+        for val in i.iter() {
+            final_vcf_annotate.push(VCFAnnotate {
+                chromo: val.chromo.clone(),
+                position: val.position.clone(),
+                id: val.id.clone(),
+                refallele: val.refallele.clone(),
+                altallele: val.altallele.clone(),
+                quality: val.quality.clone(),
+            });
+        }
     }
 
     let mut clinvar_vcf_annotate: Vec<ClinVarOMIM> = Vec::new();
@@ -148,7 +147,7 @@ pub fn clinvarvcf(vcffile: &str, clinvar: &str) -> Result<Vec<ClinVarOMIM>, Box<
 
 pub fn vcfread(line: &str) -> Result<Vec<VCFAnnotate>, Box<dyn Error>> {
     let lineinternal: String = line.to_string();
-    let mut vcfannotate:Vec<VCFAnnotate> = Vec::new();
+    let mut vcfannotate: Vec<VCFAnnotate> = Vec::new();
     if !lineinternal.starts_with("#") {
         let line = lineinternal.split("\t").collect::<Vec<_>>();
         vcfannotate.push(VCFAnnotate {

@@ -8,6 +8,7 @@ mod medgenhpo;
 mod medgenpubmed;
 mod ncbigeneid;
 mod omim;
+mod phenotype;
 mod readmedgen;
 mod structfile;
 use crate::annotation::ontologyannotate;
@@ -18,6 +19,7 @@ use crate::clinvarlinker::clinvarvcf;
 use crate::medgen::cuiparallel;
 use crate::ncbigeneid::ncbiannotate;
 use crate::omim::omimevidence;
+use crate::phenotype::phenotypeall;
 use clap::Parser;
 
 /*
@@ -84,6 +86,16 @@ fn main() {
                 "The command has finished and the annotated vcf file has been written:{:?}",
                 command
             );
+        }
+        Commands::PhenotypeLinker {
+            genesdisease,
+            genesphenotype,
+            phenotypehpoa,
+            phenotypesgenes,
+        } => {
+            let command =
+                phenotypeall(genesdisease, genesphenotype, phenotypehpoa, phenotypesgenes).unwrap();
+            println!("The command has finished: {:?}", command);
         }
     }
 }

@@ -84,4 +84,15 @@ pub enum Commands {
         /// provide the clinvar file for annotation
         clinvar: String,
     },
+    /// Phenotype associations
+    PhenotypeLinker {
+        /// genes disease association
+        genesdisease: String,
+        /// genes phenotype association
+        genesphenotype: String,
+        /// phenotype hpoa
+        phenotypehpoa: String,
+        /// phenotypes to genes
+        phenotypesgenes: String,
+    },
 }
