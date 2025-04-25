@@ -50,7 +50,7 @@ pub fn phenotypeall(
 
     let phenotypeopen = std::fs::File::open(phenotypesgenes).expect("file not found");
     let phenotyperead = BufReader::new(phenotypeopen);
-    let phenotypevector: Vec<Vec<_>> = phenotyperead
+    let phenotypeavector: Vec<Vec<_>> = phenotyperead
         .lines()
         .filter_map(|line: Result<String, _>| line.ok())
         .par_bridge()
@@ -60,10 +60,11 @@ pub fn phenotypeall(
     let mut gendivector: Vec<NCBIgene> = Vec::new();
     let mut genphenvector: Vec<GenePhenotype> = Vec::new();
     let mut phenhpoavector: Vec<PhenotypeHPOA> = Vec::new();
-    let mut phenotypvector: Vec<Phenotype> = Vec::new();
+    let mut phenotypevector: Vec<Phenotype> = Vec::new();
+    let mut phenotypemerge: Vec<PhenotypeMerged> = Vec::new();
 
-    for i in gendiseasevector.iter(){
-        for val in i.iter(){
+    for i in gendiseasevector.iter() {
+        for val in i.iter() {
             gendivector.push(NCBIgene {
                 ncbigeneid: val.ncbigeneid.clone(),
                 genesymbol: val.genesymbol.clone(),
@@ -73,10 +74,85 @@ pub fn phenotypeall(
         }
     }
 
+    for i in genesphenovector.iter() {
+        for val in i.iter() {
+            genphenvector.push(GenePhenotype {
+                ncbigeneid: val.ncbigeneid.clone(),
+                genesymbol: val.genesymbol.clone(),
+                hpoid: val.hpoid.clone(),
+                hponame: val.hponame.clone(),
+                frequency: val.frequency.clone(),
+                diseaseid: val.diseaseid.clone(),
+            });
+        }
+    }
 
+    for i in phenotypeavector.iter() {
+        for val in i.iter() {
+            phenotypevector.push(Phenotype {
+                hponameid: val.hponameid.clone(),
+                hponame: val.hponame.clone(),
+                ncbi_geneid: val.ncbi_geneid.clone(),
+                genesymbol: val.genesymbol.clone(),
+                diseaseidpheno: val.diseaseidpheno.clone(),
+            });
+        }
+    }
 
-    Ok(gendivector)
+    for i in phenohpoavector.iter() {
+        for val in i.iter() {
+            phenhpoavector.push(PhenotypeHPOA {
+                databaseid: val.databaseid.clone(),
+                diseasename: val.diseasename.clone(),
+                qualifier: val.qualifier.clone(),
+                hpoid: val.hpoid.clone(),
+                reference: val.reference.clone(),
+                evidence: val.evidence.clone(),
+                onset: val.onset.clone(),
+                frequency: val.frequency.clone(),
+                sex: val.sex.clone(),
+                modifier: val.modifier.clone(),
+                aspect: val.aspect.clone(),
+                biocuration: val.biocuration.clone(),
+            });
+        }
+    }
 
+    for i in gendivector.iter() {
+        for j in genphenvector.iter() {
+            for val in phenhpoavector.iter() {
+                for nul in phenotypevector.iter() {
+                    if i.disease == j.hpoid && val.hpoid == nul.hponameid {
+                        phenotypemerge.push(PhenotypeMerged {
+                            hponameid: nul.hponameid.clone(),
+                            ncbi_geneid: nul.ncbi_geneid.clone(),
+                            diseaseidpheno: nul.diseaseidpheno.clone(),
+                            databaseid: val.databaseid.clone(),
+                            diseasename: val.diseasename.clone(),
+                            qualifier: val.qualifier.clone(),
+                            reference: val.reference.clone(),
+                            evidence: val.evidence.clone(),
+                            onset: val.onset.clone(),
+                            sex: val.sex.clone(),
+                            modifier: val.modifier.clone(),
+                            aspect: val.aspect.clone(),
+                            biocuration: val.biocuration.clone(),
+                            ncbigeneid: j.ncbigeneid.clone(),
+                            genesymbol: j.genesymbol.clone(),
+                            hpoid: j.hpoid.clone(),
+                            hponame: j.hponame.clone(),
+                            frequency: j.frequency.clone(),
+                            diseaseid: j.diseaseid.clone(),
+                            association: i.association.clone(),
+                            disease: i.disease.clone(),
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    Ok(phenotypemerge)
 }
 
 pub fn genesdiseasemapper(lineread: String) -> std::io::Result<Vec<NCBIgene>> {

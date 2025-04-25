@@ -33,7 +33,7 @@ use clap::Parser;
 fn main() {
     let argsparse = CommandParse::parse();
     match &argsparse.command {
-        Commands::CUIgenerate {
+        Commands::CUIGENERATE {
             medgenhpo,
             medgen_omim,
             medgenmapping,
@@ -51,7 +51,7 @@ fn main() {
             let command = omimevidence(omimfile, evidencenumber, hpomapping, hpomedgen).unwrap();
             println!("The links for the given evidence are:{:?}", command);
         }
-        Commands::ClinVarOMIMEvidence {
+        Commands::CLINVAROMIMEVIDENCE {
             clinvar,
             medgen,
             medgenhpo,
@@ -60,7 +60,7 @@ fn main() {
             let command = clinvarmapper(clinvar, medgen, medgenhpo, omim).unwrap();
             println!("The command has completed:{:?}", command);
         }
-        Commands::NCBIAnnotate {
+        Commands::NCBIANNOTATE {
             ncbigeneid,
             clinvar,
             medgenomim,
@@ -71,7 +71,7 @@ fn main() {
                 ncbiannotate(ncbigeneid, clinvar, medgenomim, medgenhpo, omimsearch).unwrap();
             println!("The command has completed:{:?}", command);
         }
-        Commands::Annotator {
+        Commands::ANNOTATOR {
             pathncbimaxo,
             medgenomim,
             medgenhpo,
@@ -80,14 +80,14 @@ fn main() {
             let command = ontologyannotate(pathncbimaxo, medgenomim, medgenhpo, evidence).unwrap();
             println!("The command has been completed:{:?}", command)
         }
-        Commands::VCFClinVarAnnotate { vcffile, clinvar } => {
+        Commands::VCFCLINVARANNOTATE { vcffile, clinvar } => {
             let command = clinvarvcf(vcffile, clinvar).unwrap();
             println!(
                 "The command has finished and the annotated vcf file has been written:{:?}",
                 command
             );
         }
-        Commands::PhenotypeLinker {
+        Commands::PHENOTYPELINKER {
             genesdisease,
             genesphenotype,
             phenotypehpoa,

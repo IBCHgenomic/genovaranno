@@ -21,7 +21,7 @@ pub struct CommandParse {
 #[derive(Subcommand, Debug)]
 pub enum Commands {
     /// prepapre the CUI for the medgen
-    CUIgenerate {
+    CUIGENERATE {
         /// medgen HPO file
         medgenhpo: String,
         /// medgen OMIM file
@@ -43,7 +43,7 @@ pub enum Commands {
         hpomedgen: String,
     },
     /// clinicvar OMIM and Evidence annotator
-    ClinVarOMIMEvidence {
+    CLINVAROMIMEVIDENCE {
         /// provide the clinicavar file
         clinvar: String,
         /// provide the medgen file
@@ -54,7 +54,7 @@ pub enum Commands {
         omim: String,
     },
     /// NCBI gene annotate
-    NCBIAnnotate {
+    NCBIANNOTATE {
         /// provide the ncbigene id file
         ncbigeneid: String,
         /// provide the clinvar file
@@ -67,7 +67,7 @@ pub enum Commands {
         omimsearch: String,
     },
     /// Multistage annotation linker
-    Annotator {
+    ANNOTATOR {
         ///maxo annotations file
         pathncbimaxo: String,
         /// provide the medgenomim file
@@ -78,14 +78,14 @@ pub enum Commands {
         evidence: String,
     },
     /// annotate vcf to clinvar and medgen
-    VCFClinVarAnnotate {
+    VCFCLINVARANNOTATE {
         /// provide the vcf file for annotation
         vcffile: String,
         /// provide the clinvar file for annotation
         clinvar: String,
     },
     /// Phenotype associations
-    PhenotypeLinker {
+    PHENOTYPELINKER {
         /// genes disease association
         genesdisease: String,
         /// genes phenotype association

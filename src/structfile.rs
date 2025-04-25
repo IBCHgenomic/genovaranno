@@ -303,9 +303,9 @@ pub struct GenePhenotype {
 
 #[derive(Debug, Clone, PartialOrd, PartialEq)]
 pub struct PhenotypeMerged {
-    pub hponameid: String,
+    pub hponameid: usize,
     pub ncbi_geneid: String,
-    pub diseaseidpheno: String,
+    pub diseaseidpheno: usize,
     pub databaseid: String,
     pub diseasename: String,
     pub qualifier: String,
@@ -316,12 +316,12 @@ pub struct PhenotypeMerged {
     pub modifier: String,
     pub aspect: String,
     pub biocuration: String,
-    pub hpoid: String,
-    pub hponame: String,
-    pub frequency: String,
-    pub diseaseid: String,
     pub ncbigeneid: String,
     pub genesymbol: String,
+    pub hpoid: usize,
+    pub hponame: String,
+    pub frequency: String,
+    pub diseaseid: usize,
     pub association: String,
     pub disease: usize,
 }
