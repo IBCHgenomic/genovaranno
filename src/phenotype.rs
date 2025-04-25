@@ -20,7 +20,7 @@ pub fn phenotypeall(
     genesphenotype: &str,
     phenotypehpoa: &str,
     phenotypesgenes: &str,
-) -> Result<Vec<NCBIgene>, Box<dyn Error>> {
+) -> Result<Vec<PhenotypeMerged>, Box<dyn Error>> {
     let genediseaseopen = std::fs::File::open(genesdisease).expect("file not found");
     let genediseaseread = BufReader::new(genediseaseopen);
     let gendiseasevector: Vec<Vec<_>> = genediseaseread
@@ -72,6 +72,8 @@ pub fn phenotypeall(
             });
         }
     }
+
+
 
     Ok(gendivector)
 
