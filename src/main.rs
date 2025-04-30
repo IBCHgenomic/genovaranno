@@ -11,6 +11,7 @@ mod omim;
 mod phenotype;
 mod readmedgen;
 mod structfile;
+mod databases;
 use crate::annotation::ontologyannotate;
 use crate::args::CommandParse;
 use crate::args::Commands;
@@ -20,6 +21,7 @@ use crate::medgen::cuiparallel;
 use crate::ncbigeneid::ncbiannotate;
 use crate::omim::omimevidence;
 use crate::phenotype::phenotypeall;
+use crate::databases::databasedownload;
 use clap::Parser;
 
 /*
@@ -97,5 +99,9 @@ fn main() {
                 phenotypeall(genesdisease, genesphenotype, phenotypehpoa, phenotypesgenes).unwrap();
             println!("The command has finished: {:?}", command);
         }
+       Commands::Databases { databaseoption } => {
+                 let command = databasedownload(*databaseoption).unwrap();
+                 println!("The command has been finished and all the files have been downloaded:{}", command);
+       }
     }
 }

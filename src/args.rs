@@ -95,4 +95,9 @@ pub enum Commands {
         /// phenotypes to genes
         phenotypesgenes: String,
     },
+    /// Download databases
+    Databases {
+        /// download the databases for the annotation
+        databaseoption: Option<bool>,
+    },
 }
