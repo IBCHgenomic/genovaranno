@@ -6,6 +6,7 @@
 - Each command can be used separately to prepapre the JSON.
 - A single merged command for the complete annotation allowing the user to do complete annotation of the vcf files.
 - Database download and upgradation via dotenv.
+- **Note:** RUST Binaries will be tagged for the final release version else development version and should not be used
 
 ```
  cargo build
