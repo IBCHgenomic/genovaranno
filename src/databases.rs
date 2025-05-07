@@ -22,65 +22,41 @@ pub fn databasedownload(optionread: Option<bool>) -> Result<String, Box<dyn Erro
             .arg("https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2025-03-03/genes_to_disease.txt")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2025-03-03/genes_to_phenotype.txt")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2025-03-03/phenotype.hpoa")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2025-03-03/phenotype_to_genes.txt")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://ftp.ncbi.nlm.nih.gov/pub/medgen/medgen_pubmed_lnk.txt.gz")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGen_HPO_Mapping.txt.gz")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGen_HPO_OMIM_Mapping.txt.gz")
             .output()
             .expect("command to fail");
-        let _ = fs::create_dir("./download").unwrap();
-        let newpath = Path::new("./download");
-        let _ = env::set_current_dir(newpath);
         let _ = Command::new("wget")
             .arg("-F")
             .arg("https://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGenIDMappings.txt.gz")
