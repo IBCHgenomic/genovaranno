@@ -12,6 +12,7 @@ mod phenotype;
 mod readmedgen;
 mod structfile;
 mod databases;
+mod unifiedannotator;
 use crate::annotation::ontologyannotate;
 use crate::args::CommandParse;
 use crate::args::Commands;
